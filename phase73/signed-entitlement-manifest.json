@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "phase": 73,
+  "purpose": "signed-macho-entitlement-reality",
+  "checks": [
+    "app-macho-code-signature",
+    "app-executable-entitlements",
+    "embedded-appex-code-signature",
+    "embedded-appex-entitlements",
+    "network-extension-entitlement-reality",
+    "system-extension-entitlement-reality",
+    "high-privilege-entitlement-reality"
+  ],
+  "boundary": "diagnostics-only-no-privilege-elevation"
+}
