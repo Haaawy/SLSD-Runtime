@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "phase": 72,
+  "purpose": "signed-capability-reality-check",
+  "officialPlatformNotes": {
+    "systemExtensions": "macOS runtime surface; provisioning-profile presence alone does not establish iOS runtime support",
+    "networkExtension": "iOS-supported when the signed app/extension contains the required entitlement and matching extension point",
+    "developerRoot": "presence/readability is diagnostic only and is not treated as privilege evidence"
+  },
+  "runtimeChecks": [
+    "profile-entitlements",
+    "embedded-extension-types",
+    "systemextension-bundle-presence",
+    "dext-bundle-presence",
+    "developer-root-shallow-listing",
+    "systemextensions-module-importability"
+  ],
+  "allowedRemoteControls": [
+    "diagnosticPolicy",
+    "testPlanVersion",
+    "minimumAppVersion",
+    "featureFlags"
+  ]
+}
