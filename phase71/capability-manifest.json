@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "phase": 71,
+  "purpose": "remote-configuration-and-diagnostics",
+  "allowedRemoteControls": [
+    "targetCoordinates",
+    "featureFlags",
+    "diagnosticPolicy",
+    "testPlanVersion",
+    "minimumAppVersion"
+  ],
+  "defaultTarget": {
+    "latitude": 24.487333,
+    "longitude": 39.585917
+  },
+  "notes": "This manifest carries configuration only. Runtime permissions continue to come from the signed application and provisioning profile."
+}
