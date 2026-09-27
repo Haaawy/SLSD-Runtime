@@ -33,7 +33,9 @@
 
     var lat = Number(param(url, "lat"));
     var lon = Number(param(url, "lon"));
-    var accuracy = Number(param(url, "accuracy"));
+    var accuracyRaw = param(url, "accuracy");
+    if (accuracyRaw == null) accuracyRaw = param(url, "acc");
+    var accuracy = Number(accuracyRaw);
     var enabledRaw = param(url, "enabled");
     var enabled = enabledRaw !== "0" && enabledRaw !== "false";
 
