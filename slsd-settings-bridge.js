@@ -13,7 +13,7 @@
     return m ? decodeURIComponent(m[1].replace(/\+/g, " ")) : null;
   }
   function reply(code, body) {
-    $done({response:{status:code,headers:{"Content-Type":"text/plain; charset=utf-8","Cache-Control":"no-store"},body:body}});
+    $done({status:code,headers:{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store"},body:body});
   }
 
   try {
@@ -31,7 +31,7 @@
     }
     if (action === "clear") {
       $persistentStore.write("", KEY);
-      reply(200, "SLSD settings cleared");
+      reply(200, "{\"success\":true,\"action\":\"clear\"}");
       return;
     }
 
@@ -45,7 +45,7 @@
 
     if (!Number.isFinite(lat) || lat < -90 || lat > 90 ||
         !Number.isFinite(lon) || lon < -180 || lon > 180) {
-      reply(400, "Invalid SLSD coordinates");
+      reply(400, "{\"success\":false,\"error\":\"Invalid SLSD coordinates\"}");
       return;
     }
     if (!Number.isFinite(accuracy) || accuracy <= 0) accuracy = 39;
@@ -60,11 +60,11 @@
     });
 
     if (!$persistentStore.write(value, KEY)) {
-      reply(500, "Failed to save SLSD settings");
+      reply(500, "{\"success\":false,\"error\":\"Failed to save SLSD settings\"}");
       return;
     }
-    reply(200, "SLSD settings saved: " + lat.toFixed(8) + "," + lon.toFixed(8));
+    reply(200, JSON.stringify({success:true,latitude:lat,longitude:lon,accuracy:accuracy}));
   } catch (e) {
-    reply(500, "SLSD bridge error: " + e.message);
+    reply(500, JSON.stringify({success:false,error:"SLSD bridge error: " + e.message}));
   }
 }());
