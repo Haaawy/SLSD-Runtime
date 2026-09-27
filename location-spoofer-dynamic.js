@@ -266,6 +266,11 @@
   function loadDynamicConfig(){
     if(typeof $persistentStore==="undefined"||!$persistentStore.read) return null;
     var raw=$persistentStore.read(STORE_KEY);
+    if(!raw){
+      // Runtime-only fallback: coordinates can be provisioned by an SLSD-owned
+      // Shadowrocket settings bridge without Location Spoofer's HTTPS endpoint.
+      raw=$persistentStore.read("slsd.location.settings.v1");
+    }
     if(!raw) return null;
     var saved;
     try{ saved=JSON.parse(raw); }catch(e){ return null; }
