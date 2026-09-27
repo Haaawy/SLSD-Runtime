@@ -20,6 +20,10 @@
     var url = ($request && $request.url) || "";
     var action = param(url, "action") || "set";
 
+    if (url.indexOf("/wloc-settings/version") >= 0) {
+      reply(200, "{\"success\":true,\"moduleVersion\":\"slsd-runtime-bridge-v2\"}");
+      return;
+    }
     if (action === "query") {
       var current = $persistentStore.read(KEY);
       reply(200, current || "{\"enabled\":false}");
