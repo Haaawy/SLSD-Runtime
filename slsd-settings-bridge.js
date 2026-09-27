@@ -26,7 +26,7 @@
     }
     if (action === "query") {
       var current = $persistentStore.read(KEY);
-      reply(200, current || "{\"enabled\":false}");
+      reply(200, current ? JSON.stringify({success:true,settings:JSON.parse(current)}) : "{\"success\":true,\"enabled\":false}");
       return;
     }
     if (action === "clear") {
