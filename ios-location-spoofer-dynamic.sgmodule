@@ -5,8 +5,8 @@
 #!category=Tools
 
 [Script]
-SLSD Settings Bridge = type=http-request,pattern=^http:\/\/slsd\.local\/settings(?:\?.*)?$,requires-body=0,max-size=0,timeout=5,script-path=https://raw.githubusercontent.com/Haaawy/SLSD-Runtime/main/slsd-settings-bridge.js
-Location Spoofer Settings = type=http-request,pattern=^https?:\/\/gs-loc(-cn)?\.apple\.com\/wloc-settings\/(save|version)(\?.*)?$,requires-body=0,max-size=0,timeout=10,script-path=https://raw.githubusercontent.com/xweiba/location-spoofer/main/ThirdParty/WlocScripts/dist/v1/wloc-settings.js
+SLSD Settings Bridge = type=http-request,pattern=^https?:\/\/(?:slsd\.local|gs-loc\.apple\.com)\/(?:settings|wloc-settings\/save)(?:\?.*)?$,requires-body=0,max-size=0,timeout=5,script-path=https://raw.githubusercontent.com/Haaawy/SLSD-Runtime/main/slsd-settings-bridge.js
+Location Spoofer Settings = type=http-request,pattern=^https?:\/\/gs-loc(-cn)?\.apple\.com\/wloc-settings\/version(\?.*)?$,requires-body=0,max-size=0,timeout=10,script-path=https://raw.githubusercontent.com/xweiba/location-spoofer/main/ThirdParty/WlocScripts/dist/v1/wloc-settings.js
 Dynamic iOS Location Spoofer = type=http-response,pattern=^https?:\/\/(?:gs-loc(?:-cn)?\.apple\.com|bluedot\.is\.autonavi\.com(?:\.gds\.alibabadns\.com)?)\/clls\/wloc(?:\?.*)?$,requires-body=1,binary-body-mode=1,max-size=1048576,timeout=10,script-path=https://raw.githubusercontent.com/Haaawy/SLSD-Runtime/main/location-spoofer-dynamic.js
 
 [MITM]
